@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pague com Pix</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+    }
+    .box {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 360px;
+    }
+    .qrcode {
+      margin: 20px 0;
+    }
+    .pix-code {
+      background: #eee;
+      padding: 10px;
+      border-radius: 8px;
+      word-break: break-word;
+      font-size: 14px;
+    }
+    button {
+      background: #00b37e;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Pagamento via Pix</h2>
+    <p>Escaneie o QR Code ou copie o código Pix abaixo:</p>
+
+    <div class="qrcode">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=5e879bad-2520-465b-8414-f2ca226a704c" alt="QR Code Pix" />
+    </div>
+
+    <div class="pix-code" id="pix">
+      5e879bad-2520-465b-8414-f2ca226a704c
+    </div>
+
+    <button onclick="copiarPix()">Copiar código Pix</button>
+    <p style="font-size: 12px; margin-top: 10px;">Após o pagamento, envie o comprovante para nosso WhatsApp.</p>
+  </div>
+
+  <script>
+    function copiarPix() {
+      const texto = document.getElementById("pix").innerText;
+      navigator.clipboard.writeText(texto);
+      alert("Código Pix copiado!");
+    }
+  </script>
+</body>
+</html>
